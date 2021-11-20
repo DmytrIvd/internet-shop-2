@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectBascetItems } from '../../redux/itemsSlice';
 
-function Header() {
+const Header = () => {
+    const countInBascet = useSelector(selectBascetItems);
+
     return <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">Internet shop</Link>
@@ -13,7 +17,7 @@ function Header() {
                         <Link to="/item/1" className="nav-link">View item 1</Link>
                     </li> */}
                     <li className="nav-item">
-                        <Link to="/bascet" className="nav-link">Bascet</Link>
+                        <Link to="/bascet" className="nav-link">Bascet( <small>currently {countInBascet.length} items</small> )</Link>
                     </li>
                     {/* <li className="nav-item">
                         <Link to="/add-item" className="nav-link">Add new item</Link>
